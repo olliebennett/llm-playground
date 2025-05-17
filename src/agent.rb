@@ -3,6 +3,12 @@ require 'ruby_llm'
 class Agent
   def initialize
     @chat = RubyLLM.chat
+    @chat.with_tools(
+      Tools::ReadFile,
+      Tools::ListFiles,
+      Tools::EditFile,
+      Tools::RunShellCommand
+    )
   end
 
   def run
